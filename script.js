@@ -397,35 +397,56 @@ class PortfolioApp {
         });
     }
 
-    // Form Handling
+    // Form Handling with EmailJS
     initFormHandling() {
-        const form = document.querySelector('.form');
+        // Initialize EmailJS - Replace with your actual public key
+        emailjs.init("aRiOj2HWdUcaOqyqK");
+        
+        const form = document.getElementById('contact-form');
         if (!form) return;
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-            
-            // Simulate form submission
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
+            // Show loading state
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                submitBtn.style.background = 'var(--gradient-secondary)';
-                
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = 'var(--gradient-primary)';
+            // Send email using EmailJS
+            emailjs.sendForm('service_jlvp9lb', 'template_penhmwh', form)
+                .then(() => {
+                    // Success
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                    submitBtn.style.background = '#10b981';
                     form.reset();
-                }, 2000);
-            }, 2000);
+                    
+                    // Reset form group states
+                    const formGroups = form.querySelectorAll('.form-group');
+                    formGroups.forEach(group => group.classList.remove('focused'));
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                })
+                .catch((error) => {
+                    // Error
+                    console.error('EmailJS Error:', error);
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to send';
+                    submitBtn.style.background = '#ef4444';
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                });
         });
 
         // Floating labels
