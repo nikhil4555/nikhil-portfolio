@@ -174,7 +174,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    height: 80px;
 }
 
 .nav-logo {
@@ -695,7 +695,7 @@ body {
     font-family: var(--font-mono);
 }
 
-.code-line {
+.screen-content .code-line {
     height: 4px;
     background: var(--primary);
     margin-bottom: 8px;
@@ -706,7 +706,7 @@ body {
     box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
 }
 
-.code-line.short {
+.screen-content .code-line.short {
     width: 60%;
 }
 
