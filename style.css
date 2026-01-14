@@ -174,7 +174,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 70px;
 }
 
 .nav-logo {
@@ -196,6 +196,7 @@ body {
     color: white;
     position: relative;
     overflow: hidden;
+    
 }
 
 .logo-icon::before {
@@ -537,6 +538,288 @@ body {
 .profile-container {
     position: relative;
     z-index: 1;
+}
+
+/* Coding Geek Illustration */
+.coding-geek {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: profile-float 6s ease-in-out infinite;
+    margin: 0 auto;
+}
+
+/* Person with Cap */
+.geek-person {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.cap {
+    position: relative;
+    width: 60px;
+    height: 40px;
+    margin: 0 auto;
+    animation: head-bob 3s ease-in-out infinite;
+}
+
+.cap-crown {
+    width: 50px;
+    height: 30px;
+    background: var(--primary);
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+}
+
+.cap-brim {
+    width: 60px;
+    height: 12px;
+    background: var(--primary-dark);
+    border-radius: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.head {
+    width: 50px;
+    height: 50px;
+    background: #ffdbac;
+    border-radius: 50%;
+    margin: 5px auto 0;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.head::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #333;
+    border-radius: 50%;
+    top: 20px;
+    left: 12px;
+    box-shadow: 16px 0 0 #333;
+}
+
+.head::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    top: 32px;
+    left: 15px;
+    border-radius: 0 0 10px 10px;
+}
+
+.body {
+    width: 70px;
+    height: 60px;
+    background: var(--surface);
+    border-radius: 10px 10px 20px 20px;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid var(--border);
+}
+
+.arm {
+    width: 30px;
+    height: 8px;
+    background: #ffdbac;
+    position: absolute;
+    top: 115px;
+    border-radius: 10px;
+}
+
+.arm-left {
+    left: 110px;
+    transform: rotate(-50deg);
+    animation: typing-left 2s ease-in-out infinite;
+}
+
+.arm-right {
+    right: 110px;
+    transform: rotate(50deg);
+    animation: typing-right 2s ease-in-out infinite;
+}
+
+@keyframes head-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes typing-left {
+    0%, 100% { transform: rotate(-50deg) translateY(0); }
+    50% { transform: rotate(-50deg) translateY(3px); }
+}
+
+@keyframes typing-right {
+    0%, 100% { transform: rotate(50deg) translateY(0); }
+    50% { transform: rotate(50deg) translateY(3px); }
+}
+
+/* Mac Laptop */
+.mac-laptop {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.mac-screen {
+    width: 180px;
+    height: 120px;
+    background: #1a1a1a;
+    border: 6px solid #2a2a2a;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+}
+
+.screen-content {
+    padding: 12px;
+    font-family: var(--font-mono);
+}
+
+.code-line {
+    height: 4px;
+    background: var(--primary);
+    margin-bottom: 8px;
+    border-radius: 2px;
+    width: 0;
+    animation: code-typing 3s ease-in-out infinite;
+    animation-delay: var(--delay);
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+}
+
+.code-line.short {
+    width: 60%;
+}
+
+@keyframes code-typing {
+    0%, 100% { width: 0; opacity: 0.5; }
+    50% { width: 100%; opacity: 1; }
+}
+
+.screen-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    animation: screen-pulse 2s ease-in-out infinite;
+}
+
+@keyframes screen-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.mac-base {
+    width: 200px;
+    height: 8px;
+    background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mac-base::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background: #1a1a1a;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 5px 5px;
+}
+
+/* Coffee Cup */
+.coffee-cup {
+    position: absolute;
+    bottom: 55px;
+    right: 20px;
+    width: 28px;
+    height: 32px;
+    background: var(--primary);
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+    z-index: 0;
+}
+
+.coffee-cup::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 18px;
+    border: 3px solid var(--primary);
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+    right: -10px;
+    top: 7px;
+}
+
+.coffee-cup::after {
+    content: '';
+    position: absolute;
+    width: 23px;
+    height: 3px;
+    background: var(--primary-dark);
+    top: 0;
+    left: 2.5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.steam {
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: steam-rise 2s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.steam:nth-child(2) {
+    left: 40%;
+}
+
+.steam:nth-child(3) {
+    left: 60%;
+}
+
+@keyframes steam-rise {
+    0% {
+        transform: translateX(-50%) translateY(0) scale(1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-50%) translateY(-15px) scale(0.5);
+        opacity: 0;
+    }
 }
 
 .profile-image {
@@ -1249,6 +1532,11 @@ body {
     .hero {
         text-align: center;
         padding: var(--space-xl) 0;
+        padding-top: 80px;
+    }
+    
+    .hero-visual {
+        margin-top: var(--space-lg);
     }
     
     .hero-stats {
